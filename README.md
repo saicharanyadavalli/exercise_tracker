@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+# 🏋️‍♀️ Exercise Tracker
 
-## Project info
+An elegant and intuitive fitness tracking web application designed to help users visualize their workouts and progress — built using modern web technologies for performance and scalability.
 
-**URL**: https://lovable.dev/projects/23ee7d94-2b28-46ff-b691-24f7a2977463
+---
 
-## How can I edit this code?
+## 🔗 Live Project
 
-There are several ways of editing your application.
+🌐 **URL**: [https://lovable.dev/projects/23ee7d94-2b28-46ff-b691-24f7a2977463](https://lovable.dev/projects/23ee7d94-2b28-46ff-b691-24f7a2977463)  
+✏️ **Edit & Collaborate**: You can make live edits to this project using the above link.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/23ee7d94-2b28-46ff-b691-24f7a2977463) and start prompting.
+## 🚀 Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- 📸 Real-time camera input for exercise tracking
+- 🤖 AI-powered pose detection (MediaPipe / similar)
+- 📈 Visual representation of user movement & performance
+- 🎨 Sleek and modern UI powered by shadcn-ui and Tailwind CSS
+- ⚡ Super-fast performance with Vite + TypeScript + React
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## 🛠️ Tech Stack
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- ⚙️ **Vite** – Lightning-fast frontend tooling
+- ⚛️ **React** – Declarative UI and component-based architecture
+- 🧠 **TypeScript** – Type-safe JavaScript development
+- 🎨 **Tailwind CSS** – Utility-first CSS for rapid styling
+- 🧩 **shadcn/ui** – Accessible and beautifully designed UI components
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/23ee7d94-2b28-46ff-b691-24f7a2977463) and click on Share -> Publish.
+## 🚧 Development Setup
 
-## Can I connect a custom domain to my Lovable project?
+### 1. Clone the Repository
 
-Yes, you can!
+```bash
+git clone https://github.com/saicharanyadavalli/exercise_tracker.git
+cd exercise_tracker
+```
+### 2. Install Dependencies
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```bash
+npm install
+```
+### 3. Run the App
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+npm run dev
+```
+### The app will now be running locally
+##📷 Camera & AI Notes
+- Make sure you're using HTTPS when running or deploying the app to allow browser access to the camera.
+- Ensure permissions are granted for camera access when prompted.
+##👏 Credits
+Built with ❤️ using Lovable, an innovative AI-powered tool for building and hosting modern web apps.
