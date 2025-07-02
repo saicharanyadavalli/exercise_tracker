@@ -1,9 +1,10 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Camera, Play, Activity, Timer, Target, Zap, Users, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import WorkoutCamera from '@/components/WorkoutCamera';
+import ExerciseInstructions from '@/components/ExerciseInstructions';
 
 const exercises = [
   {
@@ -58,20 +59,31 @@ const exercises = [
 
 const Index = () => {
   const [selectedExercise, setSelectedExercise] = useState(null);
+  const [showInstructions, setShowInstructions] = useState(false);
   const [isWorkoutActive, setIsWorkoutActive] = useState(false);
 
-  const startExercise = (exercise) => {
+  const selectExercise = (exercise) => {
     setSelectedExercise(exercise);
+    setShowInstructions(true);
+  };
+
+  const startWorkout = () => {
+    setShowInstructions(false);
     setIsWorkoutActive(true);
   };
 
   const stopWorkout = () => {
     setIsWorkoutActive(false);
+    setShowInstructions(false);
     setSelectedExercise(null);
   };
 
   if (isWorkoutActive && selectedExercise) {
     return <WorkoutCamera exercise={selectedExercise} onStop={stopWorkout} />;
+  }
+
+  if (showInstructions && selectedExercise) {
+    return <ExerciseInstructions exerciseId={selectedExercise.id} onStart={startWorkout} />;
   }
 
   return (
@@ -118,11 +130,11 @@ const Index = () => {
                   <p className="text-sm text-slate-400 mb-6">Target: {exercise.targetMuscles}</p>
                   
                   <Button 
-                    onClick={() => startExercise(exercise)}
+                    onClick={() => selectExercise(exercise)}
                     className={`w-full bg-gradient-to-r ${exercise.color} hover:shadow-lg hover:shadow-purple-500/25 border-0 rounded-xl font-semibold text-white py-3 transition-all duration-300`}
                   >
                     <Play className="w-5 h-5 mr-2" />
-                    Start Exercise
+                    View Instructions
                   </Button>
                 </div>
               </Card>
