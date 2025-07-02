@@ -1,6 +1,6 @@
 
 // Exercise detection logic using pose landmarks
-const calculateAngle = (a, b, c) => {
+const calculateAngle = (a: any, b: any, c: any) => {
   const radians = Math.atan2(c.y - b.y, c.x - b.x) - Math.atan2(a.y - b.y, a.x - b.x);
   let angle = Math.abs(radians * 180.0 / Math.PI);
   if (angle > 180.0) {
@@ -9,11 +9,17 @@ const calculateAngle = (a, b, c) => {
   return angle;
 };
 
-const calculateDistance = (point1, point2) => {
+const calculateDistance = (point1: any, point2: any) => {
   return Math.sqrt(Math.pow(point2.x - point1.x, 2) + Math.pow(point2.y - point1.y, 2));
 };
 
 class ExerciseDetector {
+  protected state: string;
+  protected repCount: number;
+  protected lastStateChange: number;
+  protected minFramesBetweenReps: number;
+  protected frameCount: number;
+
   constructor() {
     this.state = 'up';
     this.repCount = 0;
@@ -28,10 +34,14 @@ class ExerciseDetector {
     this.lastStateChange = 0;
     this.frameCount = 0;
   }
+
+  detect(landmarks: any): { repCompleted: boolean; feedback: string } {
+    return { repCompleted: false, feedback: 'Not implemented' };
+  }
 }
 
 class PushUpDetector extends ExerciseDetector {
-  detect(landmarks) {
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     this.frameCount++;
@@ -81,7 +91,7 @@ class PushUpDetector extends ExerciseDetector {
 }
 
 class SquatDetector extends ExerciseDetector {
-  detect(landmarks) {
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     this.frameCount++;
@@ -128,13 +138,16 @@ class SquatDetector extends ExerciseDetector {
 }
 
 class PlankDetector extends ExerciseDetector {
+  private startTime: number | null;
+  private isHolding: boolean;
+
   constructor() {
     super();
     this.startTime = null;
     this.isHolding = false;
   }
 
-  detect(landmarks) {
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     const leftShoulder = landmarks[11];
@@ -174,7 +187,7 @@ class PlankDetector extends ExerciseDetector {
 }
 
 class SitUpDetector extends ExerciseDetector {
-  detect(landmarks) {
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     this.frameCount++;
@@ -227,7 +240,7 @@ class SitUpDetector extends ExerciseDetector {
 }
 
 class LungeDetector extends ExerciseDetector {
-  detect(landmarks) {
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     this.frameCount++;
@@ -278,7 +291,12 @@ class LungeDetector extends ExerciseDetector {
 }
 
 class JumpingJackDetector extends ExerciseDetector {
-  detect(landmarks) {
+  constructor() {
+    super();
+    this.state = 'closed';
+  }
+
+  detect(landmarks: any) {
     if (!landmarks) return { repCompleted: false, feedback: 'No pose detected' };
     
     this.frameCount++;
