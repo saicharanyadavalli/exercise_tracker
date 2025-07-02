@@ -13,7 +13,8 @@ const exercises = [
     icon: Activity,
     description: 'Upper body strength exercise',
     color: 'from-blue-500 to-cyan-500',
-    targetMuscles: 'Chest, Arms, Core'
+    targetMuscles: 'Chest, Arms, Core',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'squats',
@@ -21,7 +22,8 @@ const exercises = [
     icon: Target,
     description: 'Lower body compound movement',
     color: 'from-purple-500 to-pink-500',
-    targetMuscles: 'Legs, Glutes, Core'
+    targetMuscles: 'Legs, Glutes, Core',
+    image: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'planks',
@@ -29,7 +31,8 @@ const exercises = [
     icon: Timer,
     description: 'Core stability hold',
     color: 'from-green-500 to-emerald-500',
-    targetMuscles: 'Core, Shoulders'
+    targetMuscles: 'Core, Shoulders',
+    image: 'https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'situps',
@@ -37,7 +40,8 @@ const exercises = [
     icon: RotateCcw,
     description: 'Abdominal strengthening',
     color: 'from-orange-500 to-red-500',
-    targetMuscles: 'Abs, Hip Flexors'
+    targetMuscles: 'Abs, Hip Flexors',
+    image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'lunges',
@@ -45,7 +49,8 @@ const exercises = [
     icon: Users,
     description: 'Unilateral leg exercise',
     color: 'from-indigo-500 to-purple-500',
-    targetMuscles: 'Legs, Glutes, Balance'
+    targetMuscles: 'Legs, Glutes, Balance',
+    image: 'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   },
   {
     id: 'jumpingjacks',
@@ -53,7 +58,8 @@ const exercises = [
     icon: Zap,
     description: 'Full body cardio movement',
     color: 'from-yellow-500 to-orange-500',
-    targetMuscles: 'Full Body, Cardio'
+    targetMuscles: 'Full Body, Cardio',
+    image: 'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   }
 ];
 
@@ -116,15 +122,24 @@ const Index = () => {
             return (
               <Card 
                 key={exercise.id}
-                className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
+                className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
               >
-                <div className={`absolute inset-0 bg-gradient-to-r ${exercise.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r ${exercise.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 
-                <div className="relative z-10">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${exercise.color} rounded-xl mb-4 shadow-lg`}>
-                    <IconComponent className="w-8 h-8 text-white" />
+                {/* Exercise Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={exercise.image} 
+                    alt={exercise.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className={`absolute top-4 right-4 p-2 bg-gradient-to-r ${exercise.color} rounded-lg shadow-lg`}>
+                    <IconComponent className="w-6 h-6 text-white" />
                   </div>
-                  
+                </div>
+                
+                <div className="relative z-10 p-6">
                   <h3 className="text-2xl font-bold text-white mb-2">{exercise.name}</h3>
                   <p className="text-slate-300 mb-3">{exercise.description}</p>
                   <p className="text-sm text-slate-400 mb-6">Target: {exercise.targetMuscles}</p>
